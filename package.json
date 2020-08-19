@@ -1,0 +1,23 @@
+{
+  "name": "greezy-bot",
+  "version": "1.0.0",
+  "description": "Greezy bot is Discord Bot for your Discord Server!",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enffinity/greezy-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enffinity/greezy-bot/issues"
+  },
+  "homepage": "https://github.com/enffinity/greezy-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1"
+  }
+}
