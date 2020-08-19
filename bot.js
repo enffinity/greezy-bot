@@ -13,11 +13,11 @@ client.on('message', async(message) => {
     if(message.author.bot || !message.content.startsWith(prefix)) return;
     const command = message.content.startsWith(prefix);
 
-    if(command + 'ping') {
+    if(message.content.startsWith(`${prefix}ping`)) {
         let m = await message.channel.send('Pinging... :ping_pong:')
         let ping = m.createdTimestamp - message.createdTimestamp;
         message.channel.send(`Pong! Took ${ping} to receive your message!`)
-    } else if(command + 'kick') {
+    } else if (message.content.startsWith(`${prefix}kick`)) {
         if(message.member.hasPermission("KICK_MEMBERS")) {
             let user = message.mentions.users.first();
             if(!user) return message.channel.send('You did not mention someone!')
@@ -26,7 +26,7 @@ client.on('message', async(message) => {
         } else {
             return message.channel.send('You don\'t have permissions to use this!')
         }
-    } else if (command + 'ban') {
+    } else if (message.content.startsWith(`${prefix}ban`)) {
         if (message.member.hasPermission("BAN_MEMBERS")) {
             let user = message.mentions.users.first();
             if (!user) return message.channel.send('You did not mention someone!')
@@ -35,7 +35,7 @@ client.on('message', async(message) => {
         } else {
             return message.channel.send('You don\'t have permissions to use this!')
         }
-    } else if(command + 'clear') {
+    } else if (message.content.startsWith(`${prefix}clear`)) {
         if(message.member.hasPermission("MANAGE_MESSAGES")) {
             let amount = message.content.substring(7);
             if(!amount) return message.channel.send('You didn\'t put an amount!')
@@ -49,11 +49,14 @@ client.on('message', async(message) => {
         } else {
             return message.channel.send('You don\'t have permissions to use this!')
         }
-    } else if(command + 'nuke') {
+    } else if (message.content.startsWith(`${prefix}nuke`)) {
         if(message.member.hasPermission(["MANAGE_CHANNELS", "MANAGE_MESSAGES"])) {
             try {
                 message.channel.bulkDelete('100');
-                message.channel.send('Successfully nuked this channel!')
+                let m = await message.channel.send('Successfully nuked this channel!')
+                setTimeout(function() {
+                    m.delete();
+                }, 1200)
             } catch (err) {
                 message.channel.send('There seems to be messages older than 14 days old in this channel so i can\'t delete them due to Discord API limitations');
             }
