@@ -9,3 +9,6 @@ In the `config.json` file replace **token**, **logging-channel-id** and **prefix
 
 ## How to use
 This bot has easy to learn commands such as **kick**, **ban**, **clear** and **nuke**!
+
+## Running
+It's very simple to run the bot, just type `node bot.js`
