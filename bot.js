@@ -28,3 +28,6 @@ client.on('message', async(message) => {
     if(!client.commands.get(command)) return;
     if(client.commands.get(command)) client.commands.get(command).execute(client, message, args);
 })
+
+client.on('warn', console.warn);
+client.on('error', console.error);
