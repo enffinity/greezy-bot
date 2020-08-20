@@ -4,7 +4,7 @@
   "description": "Greezy bot is Discord Bot for your Discord Server!",
   "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install":"npm i discord.js"
   },
   "repository": {
     "type": "git",
