@@ -47,6 +47,39 @@ client.on('messageDelete', message => {
         }
     }
 });
+client.on('guildBanAdd', (guild, user) => {
+    const channel = client.channels.cache.get(config.logging_channel_id);
+    if(channel) {
+        const embed = new Discord.MessageEmbed()
+            .setTitle('Member Banned')
+            .addField('Member Tag', user.tag)
+            .addField('Member Id', user.id)
+
+        channel.send(embed)
+    }
+})
+client.on('guildMemberRemove', (guild, user) => {
+    const channel = client.channels.cache.get(config.logging_channel_id);
+    if (channel) {
+        const embed = new Discord.MessageEmbed()
+            .setTitle('Member Left')
+            .addField('Member Tag', user.tag)
+            .addField('Member Id', user.id)
+
+        channel.send(embed)
+    }
+})
+client.on('guildBanRemove', (guild, user) => {
+    const channel = client.channels.cache.get(config.logging_channel_id);
+    if (channel) {
+        const embed = new Discord.MessageEmbed()
+            .setTitle('Member Unbanned')
+            .addField('Member Tag', user.tag)
+            .addField('Member Id', user.id)
+
+        channel.send(embed)
+    }
+})
 
 client.on('warn', console.warn);
 client.on('error', console.error);
